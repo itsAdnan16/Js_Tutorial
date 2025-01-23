@@ -1,0 +1,65 @@
+The Global Execution Context (GEC) is the default execution environment in JavaScript where the code begins its execution. It forms the foundation of the JavaScript execution stack and is created whenever JavaScript code is executed in a runtime environment like a browser or Node.js.
+
+Key Characteristics of the Global Execution Context
+Global Scope:
+
+Variables and functions declared outside any function belong to the global scope.
+They are accessible anywhere in the script.
+this Keyword:
+
+In the global execution context:
+In a browser, this refers to the window object.
+In Node.js, this refers to the global object.
+Single Instance:
+
+Only one global execution context exists during the lifetime of the JavaScript program.
+Created Automatically:
+
+The GEC is created as soon as the script starts executing.
+How Does the Global Execution Context Work?
+The creation of the GEC involves two main phases:
+
+1. Creation Phase (Memory Allocation):
+JavaScript engine sets up memory space for variables, functions, and the this object.
+Variables are initialized with undefined.
+Functions are stored in memory in their entirety.
+2. Execution Phase (Code Execution):
+The code is executed line by line.
+Variables are assigned their actual values, and functions are invoked as necessary.
+Structure of the Global Execution Context
+The GEC has two main components:
+
+Global Object:
+
+In a browser, this is the window object.
+In Node.js, this is the global object.
+this Keyword:
+
+Refers to the global object in the global execution context.
+Example
+javascript
+Copy
+Edit
+var x = 10;
+
+function greet() {
+  console.log("Hello, world!");
+}
+
+console.log(this); // In a browser, refers to the `window` object
+console.log(window.x); // 10 (same as x, since `x` is in the global scope)
+
+greet(); // Logs "Hello, world!"
+Execution Flow:
+Creation Phase:
+
+Memory is allocated:
+x is initialized to undefined.
+greet is stored in memory.
+Execution Phase:
+
+x is assigned 10.
+greet is executed when called.
+Interaction with the Execution Stack
+When a script runs, the GEC is pushed onto the execution stack. If a function is called, a new Function Execution Context (FEC) is created and pushed onto the stack. Once the function finishes, its context is popped off, leaving the GEC at the bottom of the stack.
+

@@ -13,7 +13,7 @@ if (true) {
 // console.log(b);
 // console.log(c);
 
-
+//This is the example of closure property in javascript when function access variable or things from its outer scope
 function one(){
     const username = "hitesh"
 
