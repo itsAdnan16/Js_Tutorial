@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .game-container {
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      width: 80px;
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Guess the Number!</h1>
+    <p>Pick a number between <strong>1 and 10</strong></p>
+
+    <input type="number" id="guess" min="1" max="10" placeholder="1-10">
+    <button onclick="checkGuess()">Submit Guess</button>
+
+    <p id="message"></p>
+    <p id="attempts">Attempts left: 3</p>
+  </div>
+
+  <script>
+    const secretNumber = Math.floor(Math.random() * 10) + 1;
+    let attemptsLeft = 3;
+
+    function checkGuess() {
+      const guessInput = document.getElementById('guess');
+      const message = document.getElementById('message');
+      const attempts = document.getElementById('attempts');
+      const userGuess = parseInt(guessInput.value);
+
+      if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
+        message.textContent = 'Please enter a number between 1 and 10.';
+        return;
+      }
+
+      attemptsLeft--;
+
+      if (userGuess === secretNumber) {
+        message.textContent = `🎯 Congratulations! You guessed it right: ${secretNumber}`;
+        disableGame();
+      } else if (attemptsLeft > 0) {
+        message.textContent = userGuess < secretNumber ? 'Too low! Try again.' : 'Too high! Try again.';
+        attempts.textContent = `Attempts left: ${attemptsLeft}`;
+      } else {
+        message.textContent = `❌ Game Over! The correct number was ${secretNumber}.`;
+        attempts.textContent = 'No attempts left.';
+        disableGame();
+      }
+
+      guessInput.value = '';
+    }
+
+    function disableGame() {
+      document.getElementById('guess').disabled = true;
+      document.querySelector('button').disabled = true;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="heading">Chai aur code</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // function change_name(){
+    //     let element = document.querySelector('#heading')
+    //     element.innerHTML = "Learning javascript"
+    // }
+    // const set_content = setTimeout(change_name,2500)
+
+    // function stop_change_name(){
+    //     clearTimeOut(set_content)
+    // }
+    // document.querySelector('#stop').addEventListener('click',stop_change_name)
+
+    //Doing the assignment when i have to print name in console
+    let intervalId;  // Make sure to use 'intervalId' everywhere consistently
+
+    function print() {
+        console.log("Hello Adnan");
+    }
+
+    const Print_Many = function() {
+        intervalId = setInterval(print, 1000);  // Store the interval ID in the 'intervalId' variable
+    };
+
+    function stop_printing() {
+        clearInterval(intervalId);  // Stop the interval using the 'intervalId'
+    }
+
+    document.querySelector('#start').addEventListener('click', Print_Many);
+    document.querySelector('#stop').addEventListener('click', stop_printing);
+
+
+
+</script>
+</html>

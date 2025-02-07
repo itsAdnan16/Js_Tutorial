@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burning Candle</title>
+  <style>
+    /* CSS styles will go here */
+    body {
+      background-color: #222; /* Dark background for better visibility */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .candle {
+      position: relative;
+      width: 80px;
+      height: 150px;
+      background-color: #f0e68c; /* Light yellow for wax */
+      margin: 50px auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .melt {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      width: 70px;
+      height: 30px;
+      background-color: #f0e68c;
+      border-radius: 35px 35px 0 0;
+      transform: translateX(-50%);
+      overflow: hidden;
+    }
+
+    .melt:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 100%;
+      height: 20px;
+      background-color: #d2b48c; /* Darker yellow-brown for melted wax */
+      border-radius: 50%;
+      transform: translateX(-50%);
+      animation: drip 2s linear infinite;
+    }
+
+    @keyframes drip {
+      0% { height: 20px; }
+      50% { height: 10px; }
+      100% { height: 20px; }
+    }
+
+    .wick {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      width: 4px;
+      height: 15px;
+      background-color: #333; /* Dark gray for wick */
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .flame {
+      position: absolute;
+      top: -30px; /* Adjusted for better flame position */
+      left: 50%;
+      width: 20px;
+      height: 40px;
+      background-color: #ff9933; /* Orange for flame */
+      border-radius: 50% 50% 0 0;
+      transform: translateX(-50%);
+      animation: flicker 0.4s ease-in-out infinite, flameMovement 3s ease-in-out infinite alternate; /* Combined animations */
+      z-index: 1;
+      transform-origin: bottom center; /* Important for scaling from the bottom */
+    }
+
+    .flame:before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      width: 10px;
+      height: 20px;
+      background-color: #ffcc00; /* Yellow for inner flame */
+      border-radius: 50% 50% 0 0;
+      transform: translateX(-50%);
+    }
+
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); opacity: 1; }
+      50% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
+      100% { transform: translateX(-50%) scale(1); opacity: 1; }
+    }
+
+    @keyframes flameMovement {
+      0% { transform: translateX(-50%) rotate(-3deg); }
+      100% { transform: translateX(-50%) rotate(3deg); }
+    }
+
+    .glow {
+      position: absolute;
+      top: -50px; /* Adjusted for better glow position */
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      background-color: rgba(255, 204, 0, 0.3); /* Soft yellow glow */
+      border-radius: 50%;
+      transform: translateX(-50%);
+      filter: blur(10px);
+    }
+  </style>
+</head>
+<body>
+  <div class="candle">
+    <div class="melt"></div>
+    <div class="wick"></div>
+    <div class="flame">
+      <div class="glow"></div>
+    </div>
+  </div>
+</body>
+</html>

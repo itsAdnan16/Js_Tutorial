@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burning Candle</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #2c3e50; /* Greyish background */
+        }
+
+        .candle {
+            position: relative;
+            width: 50px;
+            height: 150px;
+            background-color: #8b7355; /* Candle color */
+            border-radius: 10px 10px 0 0;
+        }
+
+        .candle::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: #ffcc00; /* Flame color */
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 0 0 20px #ffcc00, 0 0 40px #ffcc00, 0 0 60px #ffcc00;
+            animation: flame 1.5s infinite ease-in-out;
+        }
+
+        .candle::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: #ff6600; /* Inner flame color */
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff6600, 0 0 20px #ff6600;
+            animation: sparkle 1s infinite ease-in-out;
+        }
+
+        @keyframes flame {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="candle"></div>
+</body>
+</html>
